@@ -21,7 +21,7 @@ RUN mkdir -p ${VIRTUAL_ENV} \
 
 # Install build dependencies
 RUN apt-get update && apt-get upgrade -y && apt-get install -y \
-    python3-venv python3-dev gcc bcrypt git htop build-essential libssl-dev libbz2-dev libmariadb-dev supervisor pkg-config
+    python3-venv python3-dev gcc git htop build-essential libssl-dev libbz2-dev libmariadb-dev supervisor pkg-config
 
 # Switch to non-root user
 USER ${AUTH_USER}
@@ -36,7 +36,7 @@ WORKDIR ${AUTH_HOME}/mumble-authenticator
 
 # Install python dependencies
 RUN pip install --upgrade pip
-RUN pip install wheel gunicorn mysqlclient
+RUN pip install wheel bcrypt gunicorn mysqlclient
 RUN echo "Ice install will take quite some time (5+ Min) please be patient..."
 RUN pip install -r requirements.txt
 
