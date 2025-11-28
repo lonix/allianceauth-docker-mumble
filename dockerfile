@@ -10,6 +10,7 @@ USER root
 
 # Setup user and directory permissions
 SHELL ["/bin/bash", "-c"]
+RUN groupadd -g 10000 mumble
 RUN useradd -r -u 10000 -g 10000 mumble
 RUN groupadd -g 61000 ${AUTH_GROUP}
 RUN useradd -g 61000 -l -M -s /bin/false -u 61000 ${AUTH_USER}
