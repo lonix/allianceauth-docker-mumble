@@ -36,7 +36,8 @@ WORKDIR ${AUTH_HOME}/mumble-authenticator
 
 # Install python dependencies
 RUN pip install --upgrade pip
-RUN pip install wheel bcrypt gunicorn mysqlclient
+RUN pip install --no-cache-dir bcrypt==3.2.2 passlib==1.7.4
+RUN pip install wheel gunicorn mysqlclient
 RUN echo "Ice install will take quite some time (5+ Min) please be patient..."
 RUN pip install -r requirements.txt
 
